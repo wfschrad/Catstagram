@@ -70,6 +70,7 @@
             ev.preventDefault();
             let formRes = new FormData(formSubmit);
             let body = formRes.get("user-comment");
+            comment.value = "";
             fetch('/kitten/comments', {method: 'POST', body: JSON.stringify({comment: body}), headers: {'Content-Type': 'application/json'}})
                 .then(res => {
                     return res.json()
