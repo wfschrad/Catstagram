@@ -72,11 +72,13 @@ app.patch("/kitten/downvote", (req, res) => {
 
 app.post("/kitten/comments", (req, res) => {
   const comment = req.body.comment;
+  console.log(req.body);
   kitten.comments = [...kitten.comments, comment];
   res.json({ comments: kitten.comments });
 });
 
 app.delete("/kitten/comments/:id", (req, res) => {
+  console.log("in delete: ", req.params)
   const updatedComments = kitten.comments.filter((_, i) => i != req.params.id);
   kitten.comments = updatedComments;
   res.json({ comments: kitten.comments });
